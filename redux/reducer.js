@@ -1,3 +1,5 @@
+var assign = require('object-assign');
+
 function getId(state) {
   return state.todos.reduce((maxId, todo) => {
     return Math.max(todo.id, maxId)
@@ -7,7 +9,7 @@ function getId(state) {
 let reducer = function(state, action) {
   switch (action.type) {
     case 'ADD_TODO':
-      return Object.assign({}, state, {
+      return assign({}, state, {
         todos: [{
           text: action.text,
           completed: false,
